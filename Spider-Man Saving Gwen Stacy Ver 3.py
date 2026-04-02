@@ -80,11 +80,85 @@ def main_menu():
                     print("Invalid Option.")
             except ValueError:
                 print("Invalid input.")
+
 def riddle_fight():
-    print("Mysterio")
+    print("Mysterio appears in a cloud of smoke...")
+    print("Answer 3 riddles to escape his illusion.")
+
+    riddles = {
+        "I swing through the city but I am not a bird. Who am I?": "spider-man",
+        "I shoot but I am not a gun. What am I?": "web",
+        "I protect my identity. What am I?": "mask",
+        "What warns me of danger before it happens?": "spider sense"
+    }
+
+    correct = 0
+
+    while True:
+        if correct >= :
+            print("You broke Mysterio's illusion!")
+            area_02()
+            return
+
+        question = random.choice(list(riddles.keys()))
+        answer = riddles[question]
+
+        print()
+        print(question)
+        user_answer = input("> ").lower()
+
+        if user_answer == answer:
+            print("Correct.")
+            correct += 1
+        else:
+            print("Wrong. You are trapped in the illusion.")
+            return
 
 def pattern_recognition():
-    print("Chameleon")
+    print("Chameleon is disguising himself...")
+    print("Memorize the pattern.")
+    print("Use: P (Peter), MJ (MJ), M (May), S (Spider-Man)")
+    print("Get 5 correct to win.")
+    print()
+
+    options = ["P", "MJ", "M", "S"]
+    pattern = []
+
+    successes = 0
+
+    while True:
+        if successes == 5:
+            print("You exposed Chameleon!")
+            print("Press 'THREE' to continue or 'ONE' to retry.")
+            
+            choice = input("> ").upper()
+            if choice == "ONE":
+                pattern_recognition()
+            elif choice == "THREE":
+                area_03()
+            return
+
+        pattern.append(random.choice(options))
+
+        print("Memorize:")
+        for item in pattern:
+            print(item, end=" ", flush=True)
+            time.sleep(0.7)
+
+        time.sleep(1)
+
+        # clear screen effect (simple version)
+        print("\n" * 20)
+
+        user_input = input("Repeat the pattern (space separated): ").upper().split()
+
+        if user_input == pattern:
+            print("Correct.")
+            successes += 1
+        else:
+            print("Wrong. Chameleon fooled you.")
+            print("Press run again to restart.")
+            return
 
 def dodge_mechanic():
     delay = random.randint(2, 5)
